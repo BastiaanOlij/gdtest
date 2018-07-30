@@ -1,6 +1,6 @@
 # Godot GDNative Nativescript 1.1 introduction
 
-This is a Godot demo project in support of my [nativescript 1.1 YouTube tutorial video](https://youtu.be/coming_soon)
+This is a Godot demo project in support of my [nativescript 1.1 YouTube tutorial video](https://youtu.be/2hK7vOigbLQ)
 
 You will need a recent Godot master build to run this.
 
