@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://bin/gdtest.gdns" type="Script" id=2]
+
+[node name="Main" type="Node2D" index="0"]
+script = ExtResource( 1 )
+
+[node name="Test" type="Node2D" parent="." index="0"]
+script = ExtResource( 2 )
+_sections_unfolded = [ "Script" ]
+data = "Goodbye!"
+
