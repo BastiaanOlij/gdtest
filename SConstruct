@@ -8,7 +8,7 @@ target_name = 'libgdtest'
 # Local dependency paths, adapt them to your setup
 godot_headers_path = "godot-cpp/godot_headers/"
 cpp_bindings_path = "godot-cpp/"
-cpp_bindings_library_path = "godot-cpp/bin/godot-cpp"
+cpp_library = "godot-cpp"
 
 target = ARGUMENTS.get("target", "debug")
 
@@ -34,12 +34,12 @@ if platform == "osx":
     env.Append(CCFLAGS = ['-g','-O3', '-arch', 'x86_64'])
     env.Append(LINKFLAGS = ['-arch', 'x86_64'])
     target_path += 'osx/'
-    cpp_bindings_library_path += '.osx.64'
+    cpp_library += '.osx.64'
 
 if platform == "linux":
     env.Append(CCFLAGS = ['-fPIC', '-g','-O3', '-std=c++14'])
     target_path += 'x11/'
-    cpp_bindings_library_path += '.linux.64'
+    cpp_library += '.linux.64'
 
 if platform == "windows":
     env.Append(CCFLAGS = ['-DWIN32', '-D_WIN32', '-D_WINDOWS', '-W3', '-GR', '-D_CRT_SECURE_NO_WARNINGS'])
@@ -48,11 +48,12 @@ if platform == "windows":
     else:
         env.Append(CCFLAGS = ['-O2', '-EHsc', '-DNDEBUG', '-MD'])
     target_path += 'win64/'
-    cpp_bindings_library_path += '.windows.64'
+    cpp_library += '.windows.64'
 
 # , 'include', 'include/core'
 env.Append(CPPPATH=['.', 'src/', godot_headers_path, cpp_bindings_path + 'include/', cpp_bindings_path + 'include/core/', cpp_bindings_path + 'include/gen/'])
-env.Append(LIBS=[cpp_bindings_library_path])
+env.Append(LIBPATH=[cpp_bindings_path + 'bin/'])
+env.Append(LIBS=[cpp_library])
 
 sources = []
 add_sources(sources, "src")
