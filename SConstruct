@@ -31,6 +31,8 @@ def add_sources(sources, directory):
             sources.append(directory + '/' + file)
 
 if platform == "osx":
+    if ARGUMENTS.get("use_llvm","no") == "yes":
+	env["CXX"] = "clang++ -std=c++11 -stdlib=libc++"
     env.Append(CCFLAGS = ['-g','-O3', '-arch', 'x86_64'])
     env.Append(LINKFLAGS = ['-arch', 'x86_64'])
     target_path += 'osx/'
